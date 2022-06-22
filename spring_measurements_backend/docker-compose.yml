@@ -1,0 +1,26 @@
+version: '3.1'
+
+services:
+
+    spring_db:
+        image: mysql:8.0.26
+        restart: always
+        environment:
+          - MYSQL_DATABASE=meas
+          - MYSQL_ROOT_PASSWORD=root
+        volumes:
+          - mysql_db:/var/lib/mysql
+
+    mikrostoritev:
+        build: .
+        restart: always
+        ports:
+            - 8280:8280
+        environment:
+            - SPRING_PROFILES_ACTIVE=mysql
+            - SPRING_DATASOURCE_URL=jdbc:mysql://spring_db:3306/meas
+        depends_on:
+            - spring_db
+
+volumes:
+    mysql_db:             
