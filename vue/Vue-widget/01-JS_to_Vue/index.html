@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A First App</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div id="app">
+    <div>
+      <label for="goal">Opravilo</label>
+      <input type="text" id="opravilo" v-model="enteredValue" />
+      <button v-on:click="dodajOpravilo">Dodaj opravilo</button>
+    </div>
+    <ul>
+      <li v-for="opravilo in opravila">{{ opravilo }}</li>
+    </ul>
+  </div>
+
+  <script src="https://unpkg.com/vue@3"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
