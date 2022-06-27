@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      component: client
+  template:
+    metadata:
+      labels:
+        component: client
+    spec:
+      containers:
+        - name: client
+          image: tilenhlis/personapp:dev
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-cluster-ip-service
+spec:
+  selector:
+    component: client
+  ports:
+  - protocol: "TCP"
+    port: 3000
+    targetPort: 3000
+  type: LoadBalancer

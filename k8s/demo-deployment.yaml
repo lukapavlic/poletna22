@@ -1,0 +1,77 @@
+-- Postgres Database
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgresql
+  namespace: Database
+spec:
+  selector:
+    matchLabels:
+      app: postgresql
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: postgresql
+    spec:
+      containers:
+        - name: postgresql
+          image: postgresql:latest
+          ports:
+            - name: tcp
+              containerPort: 5432
+          env:
+            - name: POSTGRES_USER
+              value: postgres
+            - name: POSTGRES_PASSWORD
+              value: postgres
+            - name: POSTGRES_DB
+              value: postgres
+          volumeMounts:
+        - mountPath: /var/lib/postgresql/data
+          name: postgredb
+      volumes:
+        - name: postgredb
+          persistentVolumeClaim:
+            claimName: postgres-data
+
+-- My Api
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-api
+  namespace: Api
+spec:
+  selector:
+    matchLabels:
+      app: my-api
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: my-api
+    spec:
+      containers:
+        - name: my-api
+          image: my-api:latest
+          ports:
+            - containerPort: 8080
+              name: "http"
+          volumeMounts:
+            - mountPath: "/app"
+              name: my-app-storage
+          env:
+            - name: POSTGRES_DB
+              value: postgres
+            - name: POSTGRES_USER
+              value: postgres
+            - name: POSTGRES_PASSWORD
+              value: password
+          resources:
+            limits:
+              memory: 2Gi
+              cpu: "1"
+      volumes:
+        - name: my-app-storage
+          persistentVolumeClaim:
+            claimName: my-app-data

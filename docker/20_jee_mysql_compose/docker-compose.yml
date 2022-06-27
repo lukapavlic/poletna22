@@ -1,0 +1,27 @@
+version: '3.1'
+
+services:
+
+    osebe_db:
+        image: mysql:8.0.27
+        restart: always
+        environment:
+          - MYSQL_DATABASE=baza
+          - MYSQL_ROOT_PASSWORD=root
+        volumes:
+          - mysql_db:/var/lib/mysql    
+      
+      
+    osebe:
+        build: .
+        restart: always
+        ports:
+            - 8080:8080
+        environment:
+            - MYSQL_IP=osebe_db
+        depends_on:
+            - osebe_db
+            
+            
+volumes:
+    mysql_db:             

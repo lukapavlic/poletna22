@@ -28,7 +28,7 @@ public class RestClientJEEDemo {
                 .uri(OSEBE_OSEBA_URI)
                 .build();
         HttpResponse response = client.send(request, HttpResponse.BodyHandlers.discarding());
-        System.out.println(response.body());
+        System.out.println(response.statusCode());
     }
 
     public static void main(String[] args) throws Exception {

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: measurementsapp
+  labels:
+    name: measurementsapp
+spec:
+  selector:
+    matchLabels:
+      name: measurementsapp
+  template:
+    metadata:
+      labels:
+        name: measurementsapp
+    spec:
+      containers:
+        - name: measurementsapp
+          image: iideveloper21/measurements
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8280
+
