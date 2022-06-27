@@ -1,0 +1,9 @@
+.noga {
+    background-color: gray;
+    width: 100%;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Osnove Vue</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Seznam opravil</h1>
+    </header>
+    <section id="cilji">
+      <h2>Opravila</h2>
+      <p>{{ izpisCilja() }}</p>
+      <p>Več <a v-bind:href="povezavaVec">o Vue</a></p>
+    </section>
+  </body>
+</html>

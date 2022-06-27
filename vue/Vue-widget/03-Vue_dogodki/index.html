@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Osnove Vue</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Dogodki</h1>
+    </header>
+    <section id="dogodki">
+      <h2>Izberi akcijo</h2>
+      <button v-on:click="dodaj(5)">+</button>
+      <button v-on:click="odstrani(5)">-</button>
+      <p>Rezultat: {{ stevec }}</p>
+      <input type="text" v-bind:value="ime" v-on:input="setIme">
+      <!--<input type="text" v-model="ime">-->
+      <button v-on:click="ponastavi">Ponastavi</button>
+      <p>Vnesno ime: {{ ime }}</p>
+    </section>
+  </body>
+</html>
