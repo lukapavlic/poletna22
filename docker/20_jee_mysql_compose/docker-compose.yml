@@ -11,7 +11,6 @@ services:
         volumes:
           - mysql_db:/var/lib/mysql    
       
-      
     osebe:
         build: .
         restart: always
@@ -21,7 +20,6 @@ services:
             - MYSQL_IP=osebe_db
         depends_on:
             - osebe_db
-            
             
 volumes:
     mysql_db:             

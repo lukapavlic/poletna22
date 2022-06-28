@@ -3,7 +3,6 @@ package si.um.feri.banka.vao;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-
 import java.math.BigDecimal;
 
 @Entity
