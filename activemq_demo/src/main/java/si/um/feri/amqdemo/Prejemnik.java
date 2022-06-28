@@ -1,8 +1,6 @@
 package si.um.feri.amqdemo;
 
-
 import org.apache.activemq.ActiveMQConnectionFactory;
-
 import javax.jms.*;
 import java.io.Closeable;
 import java.io.IOException;
