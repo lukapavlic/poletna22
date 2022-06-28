@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  ml-storitev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - PROJECT=vase_ime_projekta
+      - API_TOKEN=vas_api_token
+      - MODEL=ime_modela
+      - STAGE=vas_stage
